@@ -72,7 +72,7 @@ allDataMelted <- melt(allMeanStdWithLabels, id.vars=c("activity.id", "activity.d
 
 ### Final Data
 
-After the information was processed, we could assing better names to features with the following code:
+After the information was processed, we could assing better names to features. For all those that starts with *t*, I used paste function and substring to replace the t with *time* word, and the *f* replaced by fastFourier. I realized this with the following code:
 
 ```{r}
 allDataMelted$variable = gsub('\\.','',allDataMelted$variable)

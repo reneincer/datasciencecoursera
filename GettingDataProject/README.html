@@ -254,7 +254,7 @@ allDataMelted &lt;- melt(allMeanStdWithLabels, id.vars=c(&quot;activity.id&quot;
 
 <h3>Final Data</h3>
 
-<p>After the information was processed, we could assing better names to features with the following code:</p>
+<p>After the information was processed, we could assing better names to features. For all those that starts with <em>t</em>, I used paste function and substring to replace the t with <em>time</em> word, and the <em>f</em> replaced by fastFourier. I realized this with the following code:</p>
 
 <pre><code class="r">allDataMelted$variable = gsub(&#39;\\.&#39;,&#39;&#39;,allDataMelted$variable)
 allDataMelted$variable = gsub(&#39;mean&#39;,&#39;Mean&#39;,allDataMelted$variable)
