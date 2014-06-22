@@ -163,25 +163,112 @@ hr {
 <li><code>testSubject</code> - subject associated to test data, 2,947 rows and 561 columns</li>
 </ul>
 
+<h3>Extracted Features</h3>
+
+<ul>
+<li><code>tBodyAcc-mean()-X</code></li>
+<li><code>tBodyAcc-mean()-Y</code></li>
+<li><code>tBodyAcc-mean()-Z</code></li>
+<li><code>tBodyAcc-std()-X</code></li>
+<li><code>tBodyAcc-std()-Y</code></li>
+<li><code>tBodyAcc-std()-Z</code></li>
+<li><code>tGravityAcc-mean()-X</code></li>
+<li><code>tGravityAcc-mean()-Y</code></li>
+<li><code>tGravityAcc-mean()-Z</code></li>
+<li><code>tGravityAcc-std()-X</code></li>
+<li><code>tGravityAcc-std()-Y</code></li>
+<li><code>tGravityAcc-std()-Z</code></li>
+<li><code>tBodyAccJerk-mean()-X</code></li>
+<li><code>tBodyAccJerk-mean()-Y</code></li>
+<li><code>tBodyAccJerk-mean()-Z</code></li>
+<li><code>tBodyAccJerk-std()-X</code></li>
+<li><code>tBodyAccJerk-std()-Y</code></li>
+<li><code>tBodyAccJerk-std()-Z</code></li>
+<li><code>tBodyGyro-mean()-X</code></li>
+<li><code>tBodyGyro-mean()-Y</code></li>
+<li><code>tBodyGyro-mean()-Z</code></li>
+<li><code>tBodyGyro-std()-X</code></li>
+<li><code>tBodyGyro-std()-Y</code></li>
+<li><code>tBodyGyro-std()-Z</code></li>
+<li><code>tBodyGyroJerk-mean()-X</code></li>
+<li><code>tBodyGyroJerk-mean()-Y</code></li>
+<li><code>tBodyGyroJerk-mean()-Z</code></li>
+<li><code>tBodyGyroJerk-std()-X</code></li>
+<li><code>tBodyGyroJerk-std()-Y</code></li>
+<li><code>tBodyGyroJerk-std()-Z</code></li>
+<li><code>tBodyAccMag-mean()</code></li>
+<li><code>tBodyAccMag-std()</code></li>
+<li><code>tGravityAccMag-mean()</code></li>
+<li><code>tGravityAccMag-std()</code></li>
+<li><code>tBodyAccJerkMag-mean()</code></li>
+<li><code>tBodyAccJerkMag-std()</code></li>
+<li><code>tBodyGyroMag-mean()</code></li>
+<li><code>tBodyGyroMag-std()</code></li>
+<li><code>tBodyGyroJerkMag-mean()</code></li>
+<li><code>tBodyGyroJerkMag-std()</code></li>
+<li><code>fBodyAcc-mean()-X</code></li>
+<li><code>fBodyAcc-mean()-Y</code></li>
+<li><code>fBodyAcc-mean()-Z</code></li>
+<li><code>fBodyAcc-std()-X</code></li>
+<li><code>fBodyAcc-std()-Y</code></li>
+<li><code>fBodyAcc-std()-Z</code></li>
+<li><code>fBodyAccJerk-mean()-X</code></li>
+<li><code>fBodyAccJerk-mean()-Y</code></li>
+<li><code>fBodyAccJerk-mean()-Z</code></li>
+<li><code>fBodyAccJerk-std()-X</code></li>
+<li><code>fBodyAccJerk-std()-Y</code></li>
+<li><code>fBodyAccJerk-std()-Z</code></li>
+<li><code>fBodyGyro-mean()-X</code></li>
+<li><code>fBodyGyro-mean()-Y</code></li>
+<li><code>fBodyGyro-mean()-Z</code></li>
+<li><code>fBodyGyro-std()-X</code></li>
+<li><code>fBodyGyro-std()-Y</code></li>
+<li><code>fBodyGyro-std()-Z</code></li>
+<li><code>fBodyAccMag-mean()</code></li>
+<li><code>fBodyAccMag-std()</code></li>
+<li><code>fBodyBodyAccJerkMag-mean()</code></li>
+<li><code>fBodyBodyAccJerkMag-std()</code></li>
+<li><code>fBodyBodyGyroMag-mean()</code></li>
+<li><code>fBodyBodyGyroMag-std()</code></li>
+<li><code>fBodyBodyGyroJerkMag-mean()</code></li>
+<li><code>fBodyBodyGyroJerkMag-std()</code></li>
+</ul>
+
+<h3>Activities</h3>
+
+<ul>
+<li><code>WALKING</code></li>
+<li><code>WALKING_UPSTAIRS</code></li>
+<li><code>WALKING_DOWNSTAIRS</code></li>
+<li><code>SITTING</code></li>
+<li><code>STANDING</code></li>
+<li><code>LAYING</code></li>
+</ul>
+
 <h3>Variables and transformations</h3>
 
 <ul>
 <li><code>allData</code> - contains all data combining 3 training dataframes and 3 test dataframe in just one. <code>cbind</code> and <code>rbind</code> were used to join all data. As a result, 10,299 rows with 563 variables (activity+subject+561 features)</li>
 <li><code>featuresFiltered</code> - feautures that contains std() and mean() text, in order to subset data required in the assignment. As result, a vector with 66 elements</li>
-<li><code>featuresFiltered &lt;- gsub(&#39;\\(|\\)|\\-&#39;,&#39;.&#39;,featuresFiltered$description)</code> -  Transformation that replaces parentheses by periods . in order to match with allData data frame.</li>
+<li><code>featuresFiltered</code> - Transformation that replaces parentheses by periods . in order to match with allData data frame. <code>gsub(&#39;\\(|\\)|\\-&#39;,&#39;.&#39;,featuresFiltered$description)</code></li>
 <li><code>columnsRequired</code> - 66 vector plus subject and activity element</li>
-<li><code>allMeanStd &lt;- allData[,columnsRequired]</code> - subsetting columns, in order to get just mean and std information</li>
-<li><code>allMeanStdWithLabels &lt;- merge(allMeanStd,activityLabels,by=&quot;activity.id&quot;)</code> - Transformation that assign an activit label to activity id</li>
-<li><code>allDataMelted &lt;- melt(allMeanStdWithLabels, id.vars=c(&quot;activity.id&quot;, &quot;activity.description&quot;,&quot;subject.id&quot;))</code> - Transformation to create a column with all features by activity and subject</li>
-<li><code>allDataMelted$variable = gsub(&#39;\\.&#39;,&#39;&#39;,allDataMelted$variable)</code> - Transformation, replace the . with white space in order to get better features reading</li>
-<li><code>allDataMelted$variable = gsub(&#39;mean&#39;,&#39;Mean&#39;,allDataMelted$variable)</code> - Transformation, replace with uppercase the word <em>mean</em> in order to get better features reading</li>
-<li><code>allDataMelted$variable = gsub(&#39;std&#39;,&#39;Std&#39;,allDataMelted$variable)</code> - Transformation, replace with uppercase the word <em>std</em> in order to get better features reading</li>
+<li><code>allMeanStd</code> - subsetting columns, in order to get just <em>mean</em> and <em>std</em> information <code>allData[,columnsRequired]</code> </li>
+<li><code>allMeanStdWithLabels</code> - Transformation that assign an activit label to activity id <code>merge(allMeanStd,activityLabels,by=&quot;activity.id&quot;)</code></li>
+<li><code>allDataMelted</code> - Transformation to create a column with all features by activity and subject, <code>melt(allMeanStdWithLabels, id.vars=c(&quot;activity.id&quot;, &quot;activity.description&quot;,&quot;subject.id&quot;))</code></li>
+<li><code>finalData</code> - Transformation that creates a new variable with average information for each subject and activiry, <code>dcast(data = allDataMelted, activity.id + activity.description + subject.id + subject.description ~ variable, fun = mean)</code></li>
+</ul>
+
+<h3>Transformations</h3>
+
+<ul>
+<li><code>allDataMelted$variable &lt;- gsub(&#39;\\.&#39;,&#39;&#39;,allDataMelted$variable)</code> - Transformation, replace the . with white space in order to get better features reading</li>
+<li><code>allDataMelted$variable &lt;- gsub(&#39;mean&#39;,&#39;Mean&#39;,allDataMelted$variable)</code> - Transformation, replace with uppercase the word <em>mean</em> in order to get better features reading</li>
+<li><code>allDataMelted$variable &lt;- gsub(&#39;std&#39;,&#39;Std&#39;,allDataMelted$variable)</code> - Transformation, replace with uppercase the word <em>std</em> in order to get better features reading</li>
 <li><code>allDataMelted[substring(allDataMelted$variable,1,1) == &quot;t&quot;,c(&quot;variable&quot;)] &lt;- 
     paste(&quot;time&quot;,substring(allDataMelted[substring(allDataMelted$variable,1,1) == &quot;t&quot;,c(&quot;variable&quot;)],2),sep=&quot;&quot;)</code> - Transformation, replace the initial <em>t</em> with the word <em>time</em>, for better features reading</li>
 <li><code>allDataMelted[substring(allDataMelted$variable,1,1) == &quot;f&quot;,c(&quot;variable&quot;)] &lt;- 
     paste(&quot;fastFourier&quot;,substring(allDataMelted[substring(allDataMelted$variable,1,1) == &quot;f&quot;,c(&quot;variable&quot;)],2),sep=&quot;&quot;)</code> - Transformation, replace the initial <em>w</em> with the word <em>fastFourier</em>, for better features reading</li>
 <li><code>allDataMelted$subject.description &lt;- paste(&quot;subject&quot;,allDataMelted$subject.id)</code> - Transformation that creates a better label for subjects id, e.g. <em>subject 1</em> instead of 1 number</li>
-<li><code>finalData &lt;- dcast(data = allDataMelted, activity.id + activity.description + subject.id + subject.description ~ variable, fun = mean)</code> - Transformation that creates a new variable with average information for each subject and activiry</li>
 </ul>
 
 </body>
